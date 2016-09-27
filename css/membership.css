@@ -1,0 +1,18 @@
+#membership table {
+	border: 1px solid black;
+	text-align: left;
+	width: auto;
+}
+
+#membership th {
+	padding-top: 11px;
+	padding-bottom: 11px;
+	background-color: #4CAF50;
+	color: white;
+}
+
+#membership td {
+	border: 1px solid black;
+	text-align: left;
+	width: auto;
+}

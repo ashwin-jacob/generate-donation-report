@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Donation Generator</title>
+  </head>
+  <body>
+    <h1><center>Load Member and Donation Report</center></h1>
+    <button id="logreport">Find Log Report</button>
+    <button id="memberreport">Find Member Report</button>
+    <button id="export" disabled="true">Submit</button>
+    <br>
+    <p id="log">Log Location: </p>
+    <p id="member">Member Location: </p>
+  </body>
+  <script>
+    // Button Actions
+
+    var logreport = document.getElementById("logreport");
+    logreport.addEventListener("click", function() {
+      var reader = require('./csvreader.js');
+      reader.logreportreader();
+    }, false);
+
+    var memberreport = document.getElementById("memberreport");
+    memberreport.addEventListener("click", function() {
+      var reader = require('./csvreader.js');
+      reader.membershipReader();
+    }, false);
+
+    var submitReport = document.getElementById("export");
+    submitReport.addEventListener("click", function() {
+      var reader = require('./csvreader.js');
+      reader.createReport();
+    }, false);
+  </script>
+</html>

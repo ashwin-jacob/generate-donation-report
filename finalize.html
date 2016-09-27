@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Finalize</title>
+</html>
+<body>
+  <h1><center>Finalizing Report</center></h1>
+  <button id="folder">Folder Selection</button>
+  <br>
+  <p id="report">Final Report: NOT DONE!</p>
+</body>
+<script>
+  var folder = document.getElementById("folder");
+  folder.addEventListener("click", function() {
+    var excelCreator = require('./excelCreator.js');
+    excelCreator.generateReport();
+  });
+</script>
