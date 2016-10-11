@@ -20,6 +20,7 @@ var headers = [];
 var indvNumbers = [];
 var currentPerson = null;
 var blank = false;
+var indvNumberGenerator = 1000;
 
 
 module.exports = {
@@ -61,10 +62,22 @@ module.exports = {
 				//Search by first Name in membership info
 				var listByFirst = membershipMap[firstName];
 				if(listByFirst == null) {
-					//TODO Figure out what to do if not in list by first name
+					//TODO Remove Repeating Code
 					
-					currentPerson = null; //set to undefined so we can send messages
-					blank = true;
+					var manualPerson = {
+						'First name': firstName,
+						'Last name': lastName,
+						'Address1': 'null',
+						'City State': 'null',
+						'Indiv #': indvNumberGenerator.toString
+					}
+
+					reportMap[indvNumberGenerator.toString()] = manualPerson;
+					indvNumbers.push(indvNumberGenerator.toString()); //track all indv numbers
+
+					currentPerson = indvNumberGenerator.toString();
+					blank = false;
+					indvNumberGenerator = indvNumberGenerator + 1;
 
 				}
 				else {
@@ -76,11 +89,21 @@ module.exports = {
 							personCtr.push(ctr);
 						}
 					} //END FOR
-					if(personCtr.length === 0 ) {
-						//TODO Figure out if we can't find person by last name
-						
-						currentPerson = null;
-						blank = true;
+					if(personCtr.length === 0 ) {						
+						var manualPerson = {
+						'First name': firstName,
+						'Last name': lastName,
+						'Address1': 'null',
+						'City State': 'null',
+						'Indiv #': indvNumberGenerator.toString
+						}
+
+						reportMap[indvNumberGenerator.toString()] = manualPerson;
+						indvNumbers.push(indvNumberGenerator.toString()); //track all indv numbers
+
+						currentPerson = indvNumberGenerator.toString();
+						blank = false;
+						indvNumberGenerator = indvNumberGenerator + 1;
 
 					}
 					else if(personCtr.length > 1) {
